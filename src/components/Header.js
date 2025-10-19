@@ -1,9 +1,19 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { NavLink } from "react-router-dom";
+import Dashboard from "./Dashboard";
+import Register from "./Register";
+import Testimonials from "./Testimonials";
+import About from "./About";
+import Contact from "./Contact";
+import Footer from "./Footer";
+import Services from "./Services";
 
 function Header() {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-white rounded fixed-top">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-white rounded fixed-top shadow-lg">
                 <div className="container-fluid px-4 px-lg-5">
                     <h1 className="text-secondary">Tech</h1>
                     <h1 className="text-danger"> Mahindra</h1>
@@ -19,16 +29,16 @@ function Header() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <div className="navbar-nav ms-auto">
-                            <a className="nav-link text-danger" href="#home">
+                            <a className="nav-link text-danger" href="#Home">
                                 Dashboard
                             </a>
-                            <a className="nav-link text-danger" href="#about">
+                            <a className="nav-link text-danger" href="#About">
                                 About
                             </a>
-                            <a className="nav-link text-danger" href="#contact">
+                            <a className="nav-link text-danger" href="#Contact">
                                 Contact
                             </a>
-                            <a className="nav-link  text-danger" href="#register">
+                            <a className="nav-link  text-danger" href="#Register">
                                 Register
                             </a>
                             <a className="nav-link  text-danger" href="#services">
@@ -65,7 +75,14 @@ function Header() {
                     </div>
                 </div>
             </nav>
-           </div>
+           
+           
+           
+           
+           
+           
+           
+        </div>
     );
 }
 

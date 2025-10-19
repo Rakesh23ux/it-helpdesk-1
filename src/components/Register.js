@@ -1,150 +1,192 @@
-import React, { useState } from 'react';
-import Techmlogorgb from '../images/Techmlogorgb.svg';
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Techmlogorgb from "../images/Techmlogorgb.svg";
 
-function Register() {
+const Register = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    fullName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
-  const toggleForm = () => setIsLogin(!isLogin);
-
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`${isLogin ? 'Logged in' : 'Registered'} successfully!`);
+    alert(`✅ ${isLogin ? "Login" : "Registration"} successful!`);
   };
 
   return (
     <div
+      className="d-flex align-items-center justify-content-center"
       style={{
-        minHeight: '100vh',
-backgroundImage: `linear-gradient(135deg, #151111bb, #f7f4ea), url(${Techmlogorgb})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        backgroundSize: 'contain', // or 'cover' for full coverage
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '20px'
+        minHeight: "120vh",
+        background:
+          "linear-gradient(135deg, #b71c1c, #4a0000, #43ffefff)",
+        backgroundSize: "400% 400%",
+        animation: "gradientShift 8s ease infinite",
       }}
     >
-      <div style={{
-        maxWidth: 400,
-        width: '100%',
-        backgroundColor: '#fff',
-        borderRadius: 12,
-        boxShadow: '0 6px 20px rgba(0,0,0,0.3)',
-        padding: 30
-      }}>
-        <h2 style={{
-          color: '#b71c1c',
-          fontWeight: '700',
-          letterSpacing: 1.5,
-          marginBottom: 20,
-          textAlign: 'center'
-        }}>
-          {isLogin ? 'IT SUPPORT' : 'Create Your Account'}
-        </h2>
+      <div
+        className="card shadow-lg border-0"
+        style={{
+          width: "900px",
+          borderRadius: "16px",
+          overflow: "hidden",
+          display: "flex",
+          flexDirection: "row",
+        }}
+      >
+        {/* Left Side - Branding */}
+        <div
+          className="d-none d-md-flex flex-column justify-content-center align-items-center text-light p-4"
+          style={{
+            flex: 1,
+            background:
+              "linear-gradient(135deg,  #b71c1c, #4a0000, #43ffefff)",
+            textAlign: "center",
+          }}
+        >
+          <img
+            src={Techmlogorgb}
+            alt="Tech Mahindra"
+            style={{ width: "160px", marginBottom: "20px" }}
+          />
+          <h3 className="fw-bold">Tech Mahindra Helpdesk</h3>
+          <p className="px-4" style={{ opacity: 0.9 }}>
+            Your IT companion for smart ticketing, approvals, and real-time
+            support.
+          </p>
+        </div>
 
-        <form onSubmit={handleSubmit}>
-          {!isLogin && (
+        {/* Right Side - Form Area */}
+        <div
+          className="p-5 d-flex flex-column justify-content-center bg-white"
+          style={{ flex: 1.2 }}
+        >
+          <h3
+            className="text-center fw-bold mb-4"
+            style={{ color: "#b71c1c" }}
+          >
+            {isLogin ? "Admin Sign In to Helpdesk" : "Create Your Account"}
+          </h3>
+
+          <form onSubmit={handleSubmit}>
+            {!isLogin && (
+              <div className="mb-3">
+                <label className="form-label fw-semibold text-danger">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  name="fullName"
+                  className="form-control rounded-3"
+                  placeholder="Enter your full name"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            )}
+
             <div className="mb-3">
-              <label htmlFor="fullName" className="form-label" style={{ color: '#b71c1c', fontWeight: '600' }}>
-                Full Name
+              <label className="form-label fw-semibold text-danger">
+                Email Address
               </label>
               <input
-                type="text"
-                id="fullName"
-                name="fullName"
-                className="form-control"
-                placeholder="Enter full name"
-                value={formData.fullName}
+                type="email"
+                name="email"
+                className="form-control rounded-3"
+                placeholder="Enter your email"
+                value={formData.email}
                 onChange={handleChange}
                 required
               />
             </div>
-          )}
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label" style={{ color: '#b71c1c', fontWeight: '600' }}>
-              Email address
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              className="form-control"
-              placeholder="Enter your email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label" style={{ color: '#b71c1c', fontWeight: '600' }}>
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              className="form-control"
-              placeholder="Enter your password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          {!isLogin && (
+
             <div className="mb-3">
-              <label htmlFor="confirmPassword" className="form-label" style={{ color: '#b71c1c', fontWeight: '600' }}>
-                Confirm Password
+              <label className="form-label fw-semibold text-danger">
+                Password
               </label>
               <input
                 type="password"
-                id="confirmPassword"
-                name="confirmPassword"
-                className="form-control"
-                placeholder="Confirm your password"
-                value={formData.confirmPassword}
+                name="password"
+                className="form-control rounded-3"
+                placeholder="Enter your password"
+                value={formData.password}
                 onChange={handleChange}
                 required
               />
             </div>
-          )}
-          <button
-            type="submit"
-            className="btn btn-warning w-100"
-            style={{ fontWeight: 'bold', fontSize: 16 }}
-          >
-            {isLogin ? 'Sign In' : 'Create Account'}
-          </button>
-        </form>
 
-        <p style={{ textAlign: 'center', marginTop: 15, color: '#b71c1c' }}>
-          {isLogin ? "Don't have an account? " : 'Already have an account? '}
-          <button
-            onClick={toggleForm}
-            style={{
-              border: 'none',
-              background: 'none',
-              color: '#ffeb3b',
-              cursor: 'pointer',
-              fontWeight: '600'
-            }}
-          >
-            {isLogin ? 'Create Account' : 'Sign In'}
-          </button>
-        </p>
+            {!isLogin && (
+              <div className="mb-3">
+                <label className="form-label fw-semibold text-danger">
+                  Confirm Password
+                </label>
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  className="form-control rounded-3"
+                  placeholder="Confirm password"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            )}
+
+            <button
+              type="submit"
+              className="btn btn-danger w-100 py-2 fw-semibold rounded-3"
+            >
+              {isLogin ? "Login" : "Sign Up"}
+            </button>
+          </form>
+
+          <p className="text-center mt-4 mb-0 text-muted">
+            {isLogin ? "Don’t have an account?" : "Already registered?"}{" "}
+            <button
+              type="button"
+              className="btn btn-link text-danger fw-bold p-0"
+              style={{ textDecoration: "none" }}
+              onClick={() => setIsLogin(!isLogin)}
+            >
+              {isLogin ? "Create one" : "Login"}
+            </button>
+          </p>
+        </div>
       </div>
+
+      {/* Custom Styles */}
+      <style jsx="true">{`
+        @keyframes gradientShift {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+
+        input:focus {
+          border-color: #b71c1c !important;
+          box-shadow: 0 0 0 0.2rem rgba(183, 28, 28, 0.2);
+        }
+
+        .btn-danger:hover {
+          background-color: #900000 !important;
+          transition: 0.3s;
+        }
+      `}</style>
     </div>
   );
-}
+};
 
 export default Register;

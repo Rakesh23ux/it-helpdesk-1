@@ -1,69 +1,134 @@
-import React from 'react';
+import React from "react";
+import "@fortawesome/fontawesome-free/css/all.min.css"; // ✅ Import Font Awesome
+import "bootstrap/dist/css/bootstrap.min.css"; // ✅ Import Bootstrap
 
 function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  // Scroll to top
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer>
-      {/* Compact Footer Main Section */}
-      <div className="container-fluid  rounded bg-black text-white py-2 mt-5">
-        <div className="container text-white">
-          <div className="row">
-            {/* Address */}
-            <div className="col-lg-4 col-md-6 mb-2">
-              <h6 className="mb-2">📍🗺️ Office Address</h6>
-              <p className="mb-1" style={{fontSize: '0.95rem'}}>
-                <i className="fa fa-map-marker-alt me-2"></i>
-                Near MDP Junction, Vizag
-              </p>
-              <p className="mb-1" style={{fontSize: '0.95rem'}}>
-                <i className="fa fa-envelope me-2"></i>
-                📩 TechMahindra@gmail.com
-              </p>
-            </div>
 
-            {/* Quick Links */}
-            <div className="col-lg-4 col-md-6 mb-2">
-              <h6 className="mb-2">Quick Links 🔗</h6>
-              <a className="btn btn-link text-white p-0" href="#" style={{fontSize: '0.95rem'}}>About Us</a><br />
-              <a className="btn btn-link text-white p-0" href="#" style={{fontSize: '0.95rem'}}>Contact Us</a><br />
-              <a className="btn btn-link text-white p-0" href="#" style={{fontSize: '0.95rem'}}>Our Services</a><br />
-              <a className="btn btn-link text-white p-0" href="#" style={{fontSize: '0.95rem'}}>Terms &amp; Conditions</a><br />
-              <a className="btn btn-link text-white p-0" href="#" style={{fontSize: '0.95rem'}}>Support</a>
-            </div>
+    <footer className="footer-section bg-light text-white mt-5 pt-5 border-top">
+      <div className="container-fuild bg-black pb-2 w-100 px-5 ">
+        <div className="row gy-4">
+          {/* Address */}
+          <div className="col-lg-4 col-md-6">
+            <h5 className="fw-bold mb-3 text-danger text-uppercase">
+              <i className="fa-solid fa-building me-2"></i> Office Address
+            </h5>
+            <p>
+              <i className="fa fa-map-marker-alt me-2 text-danger"></i>
 
-            {/* Social / About */}
-            <div className="col-lg-4 col-md-12 mb-2">
-              <h6 className="mb-2">Contact</h6>
-              <p style={{fontSize: '0.95rem'}}>
-                Tech Mahindra Foundation - IT Helpdesk. <br />
-                Reach us for any support or queries.
-              </p>
-              <div>
-                <a href="#" className="text-white me-2"><i className="fab fa-facebook-f"></i></a>
-                <a href="#" className="text-white me-2"><i className="fab fa-twitter"></i></a>
-                <a href="#" className="text-white me-2"><i className="fab fa-linkedin-in"></i></a>
-                <a href="#" className="text-white"><i className="fab fa-instagram"></i></a>
-              </div>
+              <a
+                href="mailto:TechMahindra@gmail.com"
+                className="text-decoration-none text-white"
+              >
+                Near MDP
+                Junction, Vizag
+                </a>
+            </p>
+            <p>
+              <i className="fa fa-envelope me-2 text-danger"></i>
+              <a
+                href="mailto:TechMahindra@gmail.com"
+                className="text-decoration-none text-white"
+              >
+                TechMahindra@gmail.com
+              </a>
+            </p>
+            <p>
+              <i className="fa fa-phone me-2 text-danger"></i>0822-277-1234
+            </p>
+          </div>
+
+          {/* Links */}
+          <div className="col-lg-4 col-md-6">
+            <h5 className="fw-bold mb-3 text-danger text-uppercase">
+              <i className="fa-solid fa-link me-2"></i> Quick Links
+            </h5>
+            <ul className="list-unstyled">
+              {[
+                "About Us",
+                "Contact Us",
+                "Our Services",
+                "Terms & Conditions",
+                "Support",
+              ].map((link, idx) => (
+                <li key={idx}>
+                  <a
+                    href="#"
+                    className="text-white text-decoration-none d-inline-block mb-2 link-hover"
+                  >
+                    <i className="fa-solid fa-chevron-right me-2 small text-danger"></i>
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Social Section */}
+          <div className="col-lg-4 col-md-12">
+            <h5 className="fw-bold mb-3 text-danger text-uppercase">
+              <i className="fa-solid fa-headset me-2"></i> Connect With Us
+            </h5>
+            <p className="text-white">
+              Tech Mahindra Foundation - IT Helpdesk
+              <br />
+              Reach us for any support or queries.
+            </p>
+
+            <div className="d-flex gap-5 ">
+              {[
+                { href: "#", icon: "fab fa-facebook-f", label: "Facebook" },
+                { href: "#", icon: "fab fa-twitter", label: "Twitter" },
+                { href: "#", icon: "fab fa-linkedin-in", label: "LinkedIn" },
+                { href: "#", icon: "fab fa-instagram", label: "Instagram" },
+              ].map(({ href, icon, label }, idx) => (
+                <a
+                  key={idx}
+                  href={href}
+                  className="social-circle"
+                  title={label}
+                  aria-label={label}
+                >
+                  <i className={icon}></i>
+                </a>
+              ))}
             </div>
           </div>
         </div>
-      </div>
-      {/* Copyright */}
-      <div className="container-fluid bg-black text-white py-1 border-top border-white-30">
-        <div className="container d-flex flex-column flex-md-row justify-content-between align-items-center" style={{fontSize: '0.97rem'}}>
-          <div className="mb-1 mb-md-0">
-            &copy; {new Date().getFullYear()} <a className="text-danger text-decoration-underline" href="#">Tech Mahindra</a>
-            . All Rights Reserved.
-          </div>
+
+        <hr className="mt-5 mb-3 border-danger opacity-50" />
+
+        {/* Footer bottom */}
+        <div className="d-flex flex-column  justify-content-between align-items-center ">
           <div>
-           👨🏻‍💻 Designed by <span className="text-danger lead">/ Rakesh /</span>
+            © {currentYear}{" "}
+            <span className="text-danger fw-bold">Tech Mahindra</span>. All
+            Rights Reserved.
+          </div>
+          <div className="mt-4 text-center mt-md-0">
+            Designed by <span className="text-danger fw-semibold"> Rakesh </span>
           </div>
         </div>
       </div>
-      {/* Back-to-Top Button */}
-      <a href="#" className="btn btn-lg btn-danger btn-lg-square rounded-circle back-to-top position-fixed end-0 m-2" style={{bottom: '20px', zIndex: 1050}}>↑
-        <i className="bi bi-arrow-up"></i>
-      </a>
+
+      {/* Back to Top */}
+      <button
+        className="btn btn-danger back-to-top shadow-lg"
+        onClick={scrollToTop}
+        aria-label="Back to top"
+        title="Back to Top"
+      >
+        <i className="fa-solid fa-arrow-up"></i>
+      </button>
     </footer>
+
   );
 }
 
