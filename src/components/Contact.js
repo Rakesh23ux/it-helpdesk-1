@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
-import Techmlogorgb from "../images/Techmlogorgb.svg";
+import Techmlogo from "../images/Techmlogo.svg";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -26,7 +26,10 @@ const Contact = () => {
     <section
       className="contact-section py-5"
       style={{
-        background: "linear-gradient(135deg, #8B0000, #1A0000)",
+        background: "linear-gradient(105deg, #b71c1c, #4a0000, #43ffefff)",
+                animation: "gradientShift 8s ease infinite",
+        backgroundSize: "400% 400%",
+
         color: "#fff",
         minHeight: "100vh",
         position: "relative",
@@ -45,14 +48,14 @@ const Contact = () => {
         }}
       ></div>
 
-      <div className="container position-relative" style={{ zIndex: 1 }}>
-        <div className="text-center mb-5">
+      <div className="container position-relative" >
+        <div className="text-center p-5 mb-5">
           <img
-            src={Techmlogorgb}
+            src={Techmlogo}
             alt="Tech Mahindra Logo"
-            style={{ width: "180px", marginBottom: "15px" }}
+            style={{ width: "200px", marginBottom: "20px" }}
           />
-          <p className="lead text-light mb-0">We’re Here to Support You 24/7</p>
+          <p className="fw-bold lead text-white mb-0">We’re Here to Support You 24/7</p>
         </div>
 
         <div className="row g-4 align-items-start">

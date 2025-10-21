@@ -1,8 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FaTicketAlt, FaClock } from "react-icons/fa";
+import { FaTicketAlt, FaClock, FaCloud, FaRobot, FaGlobe } from "react-icons/fa";
 import { FaCircleCheck } from "react-icons/fa6";
-import Techmlogorgb from "../images/Techmlogorgb.svg";
+import Techmlogo from "../images/Techmlogo.svg";
 
 function Services() {
   return (
@@ -10,7 +10,7 @@ function Services() {
       id="services"
       style={{
         background: "linear-gradient(135deg, #ffffff, #f4f5f7)",
-        padding: "4rem 0",
+        padding: "4rem 0 ",
         fontFamily: "'Poppins', Arial, sans-serif",
         color: "#212529",
       }}
@@ -18,22 +18,25 @@ function Services() {
       <div className="container">
         <div className="text-center mb-5">
           <img
-            src={Techmlogorgb}
+            src={Techmlogo}
             alt="Tech Mahindra Logo"
-            style={{ width: "140px", marginTop: "10rem" }}
+            style={{ width: "200px", marginTop: "10rem" }}
           />
         </div>
+
+        {/* Header */}
         <div className="container">
           <div className="text-center mb-5">
             <h2 className="fw-bold text-danger text-uppercase">
               Our Core Services
             </h2>
             <p className="text-muted fs-5">
-              Powering efficient IT operations with smart ticket tracking,
-              approvals, and resolutions.
+              Powering efficient IT operations with intelligent systems for
+              ticket management, automation, and enterprise support.
             </p>
           </div>
 
+          {/* ====== Row 1 ====== */}
           <div className="row g-4">
             {/* Ticket Management */}
             <div className="col-lg-4 col-md-6">
@@ -85,6 +88,7 @@ function Services() {
                 </div>
               </div>
             </div>
+
             {/* Approvals & Resolutions */}
             <div className="col-lg-4 col-md-6">
               <div className="card shadow-lg service-card">
@@ -94,8 +98,8 @@ function Services() {
                   </div>
                   <h5 className="fw-bold">Approvals & Resolutions</h5>
                   <p className="text-muted mb-3">
-                    Streamlined workflow for quicker approvals, automated resolutions, and
-                    consistent service quality.
+                    Streamlined workflow for quicker approvals, automated
+                    resolutions, and consistent service quality.
                   </p>
                   <div className="table-responsive">
                     <table className="table table-sm text-center align-middle">
@@ -117,18 +121,12 @@ function Services() {
                           <td>24</td>
                           <td>72%</td>
                         </tr>
-                        <tr>
-                          <td>Escalated</td>
-                          <td>6</td>
-                          <td>9%</td>
-                        </tr>
                       </tbody>
                     </table>
                   </div>
                 </div>
               </div>
             </div>
-
 
             {/* Pending & Monitoring */}
             <div className="col-lg-4 col-md-12">
@@ -139,8 +137,8 @@ function Services() {
                   </div>
                   <h5 className="fw-bold">Pending & Monitoring</h5>
                   <p className="text-muted mb-3">
-                    Real-time insight into pending tickets, priority levels, and
-                    team performance monitoring.
+                    Real-time insight into pending tickets and priority levels,
+                    enabling timely escalation.
                   </p>
                   <ul className="list-group text-start shadow-sm rounded">
                     <li className="list-group-item d-flex justify-content-between align-items-center">
@@ -155,48 +153,100 @@ function Services() {
                     </li>
                     <li className="list-group-item d-flex justify-content-between align-items-center">
                       Low Priority
-                      <span className="badge bg-success rounded-pill">null</span>
+                      <span className="badge bg-success rounded-pill">3</span>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* ====== Row 2: TechM-Focused Additions ====== */}
+          <div className="row g-4 mt-4">
+            {/* Digital Transformation */}
+            <div className="col-lg-4 col-md-6">
+              <div className="card shadow-lg service-card">
+                <div className="card-body text-center">
+                  <div className="icon-circle bg-primary bg-opacity-25 text-primary mb-3">
+                    <FaGlobe size={32} />
+                  </div>
+                  <h5 className="fw-bold">Digital Transformation</h5>
+                  <p className="text-muted">
+                    Enabling enterprise modernization through automation, AI-driven
+                    insights, and next-gen digital tools for better performance and
+                    innovation.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Cloud Infrastructure */}
+            <div className="col-lg-4 col-md-6">
+              <div className="card shadow-lg service-card">
+                <div className="card-body text-center">
+                  <div className="icon-circle bg-info bg-opacity-25 text-info mb-3">
+                    <FaCloud size={32} />
+                  </div>
+                  <h5 className="fw-bold">Cloud Infrastructure</h5>
+                  <p className="text-muted">
+                    Scalable and secure cloud environments optimized for TechM clients,
+                    ensuring uptime, performance, and cost efficiency.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* IT Automation */}
+            <div className="col-lg-4 col-md-12">
+              <div className="card shadow-lg service-card">
+                <div className="card-body text-center">
+                  <div className="icon-circle bg-secondary bg-opacity-25 text-secondary mb-3">
+                    <FaRobot size={32} />
+                  </div>
+                  <h5 className="fw-bold">IT Support Automation</h5>
+                  <p className="text-muted">
+                    AI-based chatbots, predictive maintenance, and automated issue
+                    detection reduce downtime and enhance employee experience.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Inline CSS for card animation */}
+        {/* Inline CSS */}
         <style jsx="true">{`
-        .icon-circle {
-          width: 70px;
-          height: 70px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 50%;
-          margin: 0 auto;
-        }
+          .icon-circle {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto;
+          }
 
-        .service-card {
-          border: none;
-          border-radius: 1rem;
-          transition: all 0.35s ease;
-          background-color: #fff;
-        }
+          .service-card {
+            border: none;
+            border-radius: 1rem;
+            transition: all 0.35s ease;
+            background-color: #fff;
+          }
 
-        .service-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
+          .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+          }
 
-        .progress {
-          height: 8px;
-          border-radius: 5px;
-        }
+          .progress {
+            height: 8px;
+            border-radius: 5px;
+          }
 
-        .list-group-item {
-          font-size: 0.95rem;
-        }
-      `}</style>
+          .list-group-item {
+            font-size: 0.95rem;
+          }
+        `}</style>
       </div>
     </section>
   );

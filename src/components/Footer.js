@@ -12,9 +12,9 @@ function Footer() {
 
   return (
 
-    <footer className="footer-section bg-light text-white mt-5 pt-5 border-top">
+    <div className="footer-section bg-secondary text-secondary mt-5 pt-5 border-top">
       <div className="container-fuild bg-black pb-2 w-100 px-5 ">
-        <div className="row gy-4">
+        <div className="row g-5">
           {/* Address */}
           <div className="col-lg-4 col-md-6">
             <h5 className="fw-bold mb-3 text-danger text-uppercase">
@@ -127,7 +127,8 @@ function Footer() {
       >
         <i className="fa-solid fa-arrow-up"></i>
       </button>
-    </footer>
+    </div>
+    
 
   );
 }

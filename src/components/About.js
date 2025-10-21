@@ -1,174 +1,54 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Techmlogorgb from "../images/Techmlogorgb.svg";
+import Techmlogo1 from "../images/Techmlogo1.svg";
 
 function About() {
   return (
-    <div   style={{
-    minHeight: '100vh',
-    backgroundImage: `linear-gradient(135deg, #151111bb, #f7f4ea), url(${Techmlogorgb})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    backgroundSize: 'contain', // or 'cover' for full coverage
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '20px'
-  }}
->
-    <div className="opacity-8">
-      <div className="about-container  transition-shadow bg-transparent"> 
-        <h1>IT Help Desk Ticketing System</h1>
-        <h2 className="text-warning fw-bold">Overview</h2>
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "30px",
+        background: "linear-gradient(105deg, #b71c1c, #4a0000, #43ffefff)",
+        animation: "gradientShift 8s ease infinite",
+        backgroundSize: "400% 400%",
+      }}
+    >
+      <div className="about-section text-white text-center">
+        <h1 className="fw-bold mb-3">Tech Mahindra Foundation</h1>
+        <h2 className="text-warning fw-semibold mb-4">
+          IT Help Desk Ticketing System
+        </h2>
 
-        <p className="lead text-white ">
-          Our IT Help Desk Ticketing System is built to simplify and accelerate
-          IT support processes. It provides a centralized, intuitive platform
-          for reporting, tracking, and resolving technical issues — improving
-          communication and boosting productivity.
+
+        <p className="lead  text-white mb-4 px-md-5">
+          The IT Help Desk acts as the backbone of technical assistance for
+          internal teams, ensuring smooth workflows, quick response times, and
+          effective problem resolution. It reflects the Foundation’s belief in
+          using technology to empower people and simplify processes.
         </p>
 
-        <div className="row g-4">
-          <div className="col-md-6">
-            <div className="card card-custom bg-secondary h-100">
-              <div className="card-body">
-                <h5 className="card-title text-center"> 🛠️ Key Features</h5>
-                <ul className="list-group list-group-flush mt-3">
-                  <li className="list-group-item bg-transparent text-white">
-                    ➤ Submit and monitor IT support tickets with ease.
-                  </li>
-                  <li className="list-group-item bg-transparent text-white">
-                    ➤ Intelligent ticket assignment based on skill and workload.
-                  </li>
-                  <li className="list-group-item bg-transparent text-white">
-                    ➤ Real-time progress tracking and updates.
-                  </li>
-                  <li className="list-group-item bg-transparent text-white">
-                    ➤ Centralized dashboard for user and admin visibility.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        <h3 className="fw-bold text-warning mt-5 mb-3">System Overview</h3>
+        <p className=" text-center mx-auto px-3 px-md-5">
+          ⚙️ A user-friendly interface to submit and monitor IT-related issues.
+          📩 Automated ticket creation and tracking for faster resolution.
+          🔍 Transparent communication between users and IT support teams.
+          📊 Data-driven insights to improve service quality and productivity.
+          💡 Promotes accountability, collaboration, and continuous improvement
+        </p>
 
-          <div className="col-md-6">
-            <div className="card card-custom bg-success h-100">
-              <div className="card-body">
-                <h5 className="card-title text-center">
-                  📜 Benefits for Users & Teams
-                </h5>
-                <ul className="list-group list-group-flush mt-3">
-                  <li className="list-group-item bg-transparent text-white">
-                    ➤ Enhances communication and collaboration between users and
-                    IT support staff.
-                  </li>
-                  <li className="list-group-item bg-transparent text-white">
-                    ➤ Reduces resolution time and increases service quality.
-                  </li>
-                  <li className="list-group-item bg-transparent text-white">
-                    ➤ Scalable for small businesses to large enterprises.
-                  </li>
-                  <li className="list-group-item bg-transparent text-white">
-                    ➤ Facilitates continuous improvement in IT operations and
-                    customer satisfaction.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p className="lead mt-5 text-white px-md-5">
+          By integrating the Help Desk System, Tech Mahindra Foundation ensures
+          that technology remains a reliable enabler — supporting its mission to
+          empower communities and deliver excellence with purpose.
+        </p>
 
-          <div className="text-white lead  text-center mt-5" >© 2025 IT Help Desk Ticketing System | All rights reserved
-
-          </div>
+        <div className="text-black">
+          © 2025 Tech Mahindra Foundation | Empowering Futures with Technology
+       </div>
       </div>
-
-      {/* Inline Styles */}
-      <style jsx>{`
-        body {
-          margin: 0;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .about-container {
-          background-color: #9c4a4abc;
-          border-radius: 1rem;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-          padding: 40px 30px;
-          max-width: 1000px;
-          width: 100%;
-          animation: fadeInUp 1s ease;
-        }
-
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        h1,
-        h2 {
-          font-weight: 700;
-        }
-
-        h1 {
-          color: #b71c1c;
-          text-align: center;
-          margin-bottom: 10px;
-        }
-
-        h2 {
-          text-align: center;
-          margin-bottom: 30px;
-          color: #555;
-        }
-
-        .lead {
-          text-align: center;
-          color: #555;
-          margin-bottom: 40px;
-        }
-
-        .card-custom {
-          background-color: #b71c1c;
-          color: #fff;
-          border: none;
-          border-radius: 0.75rem;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card-custom:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .card-title {
-          font-size: 1.25rem;
-          font-weight: 600;
-        }
-
-        .list-group-item {
-          background-color: #fff;
-          color: #212529;
-          border: none;
-          margin-bottom: 0.5rem;
-          border-radius: 0.5rem;
-          box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.08);
-        }
-
-        footer {
-          text-align: center;
-          margin-top: 40px;
-          font-size: 0.9rem;
-          color: #863838ff;
-        }
-      `}</style>
-    </div>
     </div>
   );
 }

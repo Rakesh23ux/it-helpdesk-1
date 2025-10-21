@@ -2,13 +2,6 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { NavLink } from "react-router-dom";
-import Dashboard from "./Dashboard";
-import Register from "./Register";
-import Testimonials from "./Testimonials";
-import About from "./About";
-import Contact from "./Contact";
-import Footer from "./Footer";
-import Services from "./Services";
 
 function Header() {
     return (
@@ -17,6 +10,7 @@ function Header() {
                 <div className="container-fluid px-4 px-lg-5">
                     <h1 className="text-secondary">Tech</h1>
                     <h1 className="text-danger"> Mahindra</h1>
+                    <h5 className="text-secondary"> Foundation</h5>
                     <p className="text-danger"> 🛠 IT Helpdesk</p>
                     <button
                         className="navbar-toggler"
@@ -29,16 +23,16 @@ function Header() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <div className="navbar-nav ms-auto">
-                            <a className="nav-link text-danger" href="#Home">
+                            <a className="nav-link text-danger" href="#dashboard">
                                 Dashboard
                             </a>
-                            <a className="nav-link text-danger" href="#About">
+                            <a className="nav-link text-danger" href="#about">
                                 About
                             </a>
-                            <a className="nav-link text-danger" href="#Contact">
+                            <a className="nav-link text-danger" href="#contact">
                                 Contact
                             </a>
-                            <a className="nav-link  text-danger" href="#Register">
+                            <a className="nav-link  text-danger" href="#">
                                 Register
                             </a>
                             <a className="nav-link  text-danger" href="#services">
@@ -63,7 +57,7 @@ function Header() {
                                             </a>
                                         </li>
                                         <li>
-                                            <a className="dropdown-item" href="#">
+                                            <a className="dropdown-item" href="#services">
                                                 Support
                                             </a>
                                         </li>

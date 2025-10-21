@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Techmlogorgb from "../images/Techmlogorgb.svg";
+import Techmlogo from "../images/Techmlogo.svg";
 
 const Register = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -51,7 +51,7 @@ const Register = () => {
           }}
         >
           <img
-            src={Techmlogorgb}
+            src={Techmlogo}
             alt="Tech Mahindra"
             style={{ width: "160px", marginBottom: "20px" }}
           />

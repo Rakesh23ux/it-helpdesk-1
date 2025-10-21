@@ -58,10 +58,10 @@ function Testimonials() {
     <section className="testimonial-section   py-5">
       <div className="container">
         <div className="text-center mb-5">
-          <h2 className="fw-bold text-danger text-uppercase">
+          <h2 className="fw-bold text-warning text-uppercase">
             What Our Team Says
           </h2>
-          <p className="text-muted">
+          <p className="text-white fw-bold lead">
             Real feedback from Tech Mahindra employees using our new IT Helpdesk
             platform.
           </p>
