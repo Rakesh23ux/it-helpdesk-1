@@ -20,16 +20,19 @@ function Services() {
           <img
             src={Techmlogo}
             alt="Tech Mahindra Logo"
-            style={{ width: "200px", marginTop: "10rem" }}
+            style={{ width: "300px", marginTop: "10rem" }}
           />
         </div>
 
         {/* Header */}
         <div className="container">
           <div className="text-center mb-5">
-            <h2 className="fw-bold text-danger text-uppercase">
+            <h1 className="fw-bold text-danger text-uppercase">
+              IT Helpdesk Services
+            </h1>
+            <h3 className="fw-bold text-secondary text-uppercase">
               Our Core Services
-            </h2>
+            </h3>
             <p className="text-muted fs-5">
               Powering efficient IT operations with intelligent systems for
               ticket management, automation, and enterprise support.
@@ -85,6 +88,13 @@ function Services() {
                       ></div>
                     </div>
                   </div>
+
+                  {/* ✅ Additional Professional Content */}
+                  <ul className="text-start mt-3 small text-muted">
+                    <li>Real-time SLA tracking and automated status updates.</li>
+                    <li>Integrated user feedback after ticket closure.</li>
+                    <li>Role-based access control for enhanced data security.</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -124,6 +134,11 @@ function Services() {
                       </tbody>
                     </table>
                   </div>
+
+                  {/* ✅ Additional Professional Content */}
+                  <ul className="text-start mt-3 small text-muted">
+                    <li>AI-powered resolution suggestions for support engineers.</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -156,6 +171,13 @@ function Services() {
                       <span className="badge bg-success rounded-pill">3</span>
                     </li>
                   </ul>
+
+                  {/* ✅ Additional Professional Content */}
+                  <ul className="text-start mt-3 small text-muted">
+                    <li>Custom alerts for ticket aging and missed SLAs.</li>
+                    <li>Interactive dashboards with trend analytics.</li>
+                    <li>Automated reminder notifications for pending actions.</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -176,6 +198,12 @@ function Services() {
                     insights, and next-gen digital tools for better performance and
                     innovation.
                   </p>
+
+                  {/* ✅ Additional Professional Content */}
+                  <ul className="text-start mt-3 small text-muted">
+                    <li>Business process optimization powered by data insights.</li>
+                    <li>Cloud-native integrations to reduce infrastructure costs.</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -192,6 +220,13 @@ function Services() {
                     Scalable and secure cloud environments optimized for TechM clients,
                     ensuring uptime, performance, and cost efficiency.
                   </p>
+
+                  {/* ✅ Additional Professional Content */}
+                  <ul className="text-start mt-3 small text-muted">
+                    <li>Multi-cloud support with advanced disaster recovery.</li>
+                    <li>Zero-downtime deployment strategies for enterprises.</li>
+                    <li>End-to-end compliance with global cloud standards.</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -208,6 +243,12 @@ function Services() {
                     AI-based chatbots, predictive maintenance, and automated issue
                     detection reduce downtime and enhance employee experience.
                   </p>
+
+                  {/* ✅ Additional Professional Content */}
+                  <ul className="text-start mt-3 small text-muted">
+                    <li>Machine learning for anomaly detection and root-cause analysis.</li>
+                    <li>Automated ticket triage and intelligent routing.</li>
+                  </ul>
                 </div>
               </div>
             </div>

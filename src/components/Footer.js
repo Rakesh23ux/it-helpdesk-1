@@ -1,6 +1,6 @@
 import React from "react";
-import "@fortawesome/fontawesome-free/css/all.min.css"; // ✅ Import Font Awesome
-import "bootstrap/dist/css/bootstrap.min.css"; // ✅ Import Bootstrap
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,9 +11,16 @@ function Footer() {
   };
 
   return (
-
-    <div className="footer-section bg-secondary text-secondary mt-5 pt-5 border-top">
-      <div className="container-fuild bg-black pb-2 w-100 px-5 ">
+    <footer
+      className="footer-section text-secondary pt-5 border-top"
+      style={{
+        background: "linear-gradient(135deg, #000000, #4a0000, #000000)",
+        color: "#fff",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <div className="container-fluid px-5 pb-2">
         <div className="row g-5">
           {/* Address */}
           <div className="col-lg-4 col-md-6">
@@ -22,14 +29,12 @@ function Footer() {
             </h5>
             <p>
               <i className="fa fa-map-marker-alt me-2 text-danger"></i>
-
               <a
                 href="mailto:TechMahindra@gmail.com"
                 className="text-decoration-none text-white"
               >
-                Near MDP
-                Junction, Vizag
-                </a>
+                Near MDP Junction, Vizag
+              </a>
             </p>
             <p>
               <i className="fa fa-envelope me-2 text-danger"></i>
@@ -82,7 +87,7 @@ function Footer() {
               Reach us for any support or queries.
             </p>
 
-            <div className="d-flex gap-5 ">
+            <div className="d-flex gap-4 flex-wrap">
               {[
                 { href: "#", icon: "fab fa-facebook-f", label: "Facebook" },
                 { href: "#", icon: "fab fa-twitter", label: "Twitter" },
@@ -92,9 +97,15 @@ function Footer() {
                 <a
                   key={idx}
                   href={href}
-                  className="social-circle"
+                  className="social-circle d-flex align-items-center justify-content-center text-white border border-danger rounded-circle"
                   title={label}
                   aria-label={label}
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    fontSize: "16px",
+                    transition: "0.3s",
+                  }}
                 >
                   <i className={icon}></i>
                 </a>
@@ -106,14 +117,14 @@ function Footer() {
         <hr className="mt-5 mb-3 border-danger opacity-50" />
 
         {/* Footer bottom */}
-        <div className="d-flex flex-column  justify-content-between align-items-center ">
+        <div className="d-flex flex-column flex-md-row justify-content-between align-items-center text-center text-md-start pb-3">
           <div>
             © {currentYear}{" "}
             <span className="text-danger fw-bold">Tech Mahindra</span>. All
             Rights Reserved.
           </div>
-          <div className="mt-4 text-center mt-md-0">
-            Designed by <span className="text-danger fw-semibold"> Rakesh </span>
+          <div className="mt-3 mt-md-0">
+            Designed by <span className="text-danger fw-semibold">Rakesh</span>
           </div>
         </div>
       </div>
@@ -124,12 +135,38 @@ function Footer() {
         onClick={scrollToTop}
         aria-label="Back to top"
         title="Back to Top"
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          borderRadius: "50%",
+          width: "45px",
+          height: "45px",
+          zIndex: 999,
+        }}
       >
         <i className="fa-solid fa-arrow-up"></i>
       </button>
-    </div>
-    
 
+      {/* Inline styles for hover effects */}
+      <style jsx="true">{`
+        .social-circle:hover {
+          background-color: #dc3545;
+          border-color: #dc3545;
+          transform: translateY(-3px);
+        }
+
+        .link-hover:hover {
+          color: #dc3545 !important;
+          transform: translateX(4px);
+          transition: 0.3s;
+        }
+
+        .back-to-top:hover {
+          background-color: #900000 !important;
+        }
+      `}</style>
+    </footer>
   );
 }
 

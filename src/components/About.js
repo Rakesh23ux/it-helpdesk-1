@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Techmlogo1 from "../images/Techmlogo1.svg";
+import Techmlogo from "../images/Techmlogo.svg";
 
 function About() {
   return (
@@ -11,14 +11,17 @@ function About() {
         justifyContent: "center",
         alignItems: "center",
         padding: "30px",
-        background: "linear-gradient(105deg, #b71c1c, #4a0000, #43ffefff)",
+        background: "linear-gradient(135deg, #000000, #4a0000, #e1d9d9ff)",
         animation: "gradientShift 8s ease infinite",
         backgroundSize: "400% 400%",
       }}
     >
       <div className="about-section text-white text-center">
-        <h1 className="fw-bold mb-3">Tech Mahindra Foundation</h1>
-        <h2 className="text-warning fw-semibold mb-4">
+        <img
+          src={Techmlogo}
+          alt="Tech Mahindra"
+          style={{ width: "300px", marginBottom: "20px" }}
+        />        <h2 className="text-warning fw-semibold mb-4">
           IT Help Desk Ticketing System
         </h2>
 
@@ -34,8 +37,8 @@ function About() {
         <p className=" text-center mx-auto px-3 px-md-5">
           ⚙️ A user-friendly interface to submit and monitor IT-related issues.
           📩 Automated ticket creation and tracking for faster resolution.
-          🔍 Transparent communication between users and IT support teams.
-          📊 Data-driven insights to improve service quality and productivity.
+          🔍 Transparent communication between users and IT support teams.<br></br>
+          📊 Data-driven insights to improve service quality and productivity.<br></br>
           💡 Promotes accountability, collaboration, and continuous improvement
         </p>
 
@@ -47,8 +50,22 @@ function About() {
 
         <div className="text-black">
           © 2025 Tech Mahindra Foundation | Empowering Futures with Technology
-       </div>
+        </div>
       </div>
+      <style jsx="true">{`
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+`}</style>
+
     </div>
   );
 }

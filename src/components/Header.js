@@ -1,83 +1,69 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { NavLink } from "react-router-dom";
+import Techmlogo from "../images/Techmlogo.svg";
+import { Link } from "react-router-dom";
 
 function Header() {
-    return (
-        <div>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-white rounded fixed-top shadow-lg">
-                <div className="container-fluid px-4 px-lg-5">
-                    <h1 className="text-secondary">Tech</h1>
-                    <h1 className="text-danger"> Mahindra</h1>
-                    <h5 className="text-secondary"> Foundation</h5>
-                    <p className="text-danger"> 🛠 IT Helpdesk</p>
-                    <button
-                        className="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarNav"
-                        title="Toggle navigation"
-                    >
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <div className="navbar-nav ms-auto">
-                            <a className="nav-link text-danger" href="#dashboard">
-                                Dashboard
-                            </a>
-                            <a className="nav-link text-danger" href="#about">
-                                About
-                            </a>
-                            <a className="nav-link text-danger" href="#contact">
-                                Contact
-                            </a>
-                            <a className="nav-link  text-danger" href="#">
-                                Register
-                            </a>
-                            <a className="nav-link  text-danger" href="#services">
-                                Services
-                            </a>
-                            <ul className="navbar-nav ms-auto">
-                                <li className="nav-item dropdown">
-                                    <a
-                                        className="nav-link dropdown-toggle text-danger"
-                                        href="#"
-                                        id="navbarDropdown"
-                                        role="button"
-                                        data-bs-toggle="dropdown"
-                                        aria-expanded="false"
-                                    >
-                                        More
-                                    </a>
-                                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <li>
-                                            <a className="dropdown-item" href="#">
-                                                Terms &amp; Conditions
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a className="dropdown-item" href="#services">
-                                                Support
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+  return (
+    <nav className="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-lg">
+      <div className="container-fluid px-4 px-lg-5">
+        {/* Logo & Brand */}
+        <Link to="/" className="navbar-brand d-flex align-items-center text-decoration-none">
+          <img
+            src={Techmlogo}
+            alt="Tech Mahindra"
+            style={{ width: "160px", marginRight: "10px" }}
+          />
+          <span className="fw-bold text-danger">🛠 IT Helpdesk</span>
+        </Link>
 
-                        </div>
-                    </div>
-                </div>
-            </nav>
-           
-           
-           
-           
-           
-           
-           
+        {/* Toggler Button */}
+        <button
+          className="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        {/* Collapsible Menu */}
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto align-items-lg-center">
+            <li className="nav-item">
+              <Link to="/about" className="nav-link text-danger fw-semibold">
+                About
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link to="/contact" className="nav-link text-danger fw-semibold">
+                Contact
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link to="/services" className="nav-link text-danger fw-semibold">
+                Services
+              </Link>
+            </li>
+
+
+            {/* Login Button */}
+            <li className="nav-item mt-2 mt-lg-0 ms-lg-3">
+              <Link to="/login" className="btn btn-outline-danger fw-bold px-3">
+                Login
+              </Link>
+            </li>
+          </ul>
         </div>
-    );
+      </div>
+    </nav>
+  );
 }
 
 export default Header;

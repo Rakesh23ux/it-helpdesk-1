@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Techmlogo from "../images/Techmlogo.svg";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
+  const navigate = useNavigate();
   const [selectedTicket, setSelectedTicket] = useState(null);
 
   const tickets = [
@@ -22,164 +24,223 @@ function Dashboard() {
     { id: "#e897", title: "Internet", desc: "Network restored", status: "Completed", priority: "High" },
   ];
 
+  const handleLogout = () => {
+    alert("🚪 Logged out successfully!");
+    navigate("/");
+  };
+
   return (
     <div
-      className="d-flex justify-content-center align-items-center"
+      className="d-flex"
       style={{ minHeight: "160vh", backgroundColor: "#f8f9fa" }}
     >
-      <div className="dashboard-container border rounded shadow p-4 w-100 bg-white">
-        {/* Navbar */}
-        <nav className="navbar-custom mb-4 d-flex justify-content-between  align-items-center rounded p-3" style={{ backgroundColor: "#a72e2eff", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" }}>
-          <span className="fw-bold text-warning fs-4">Admin Dashboard</span>
-          <button type="button" className="btn btn-outline-warning text-white fw-bold">
-            Logout
-          </button>
-        </nav>
+      {/* ✅ Sidebar */}
+      <div
+        className="bg-dark text-white p-4 d-flex flex-column justify-content-start"
+        style={{
+          width: "250px",
+          position: "sticky",
+          top: 0,
+          height: "100vh",
+          boxShadow: "2px 0 8px rgba(0,0,0,0.2)",
+        }}
+      >
+    
+        <h5 className="fw-bold text-danger mb-4 text-center ">Admin Panel</h5>
+        <ul className="nav flex-column gap-3">
+          <li>
+            <a href="#overview" className="text-white text-decoration-none">
+              🏠 Dashboard Overview
+            </a>
+          </li>
+          <li>
+            <a href="#pending" className="text-white text-decoration-none">
+              🔴 Pending Tickets
+            </a>
+          </li>
+          <li>
+            <a href="#resolved" className="text-white text-decoration-none">
+              ✅ Resolved Tickets
+            </a>
+          </li>
+          <li>
+            <button
+              onClick={handleLogout}
+              className="btn btn-outline-danger w-100 fw-bold mt-4"
+            >
+              Logout
+            </button>
+          </li>
+        </ul>
+      </div>
 
-        {/* Dashboard Overview */}
-        <div className="content-container container-fluid text-center">
-          <h3 className="fw-bold text-dark">Welcome, Admin 👋</h3>
-          <p className="text-muted mb-4">
-            Here’s an overview of your IT system’s current performance.
-          </p>
+      {/* ✅ Main Content (your existing dashboard) */}
+      <div className="flex-grow-1 p-4">
+        <div className="dashboard-container border rounded shadow p-4 w-100 bg-white">
+          {/* Navbar */}
+          <nav
+            className="navbar-custom mb-4 d-flex justify-content-between align-items-center rounded p-3"
+            style={{ backgroundColor: "#a72e2eff", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" }}
+          >
+            <span className="fw-bold text-warning fs-4">Admin Dashboard</span>
+            <button
+              type="button"
+              className="btn btn-outline-warning text-white fw-bold"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          </nav>
 
-          <div className="row g-4 mb-5 justify-content-center">
-            <div className="col-md-3">
-              <div className="card bg-primary text-white">
-                <div className="card-body">
-                  <h5 className="card-title">Open Tickets</h5>
-                  <p className="card-text fs-3 fw-semibold">28</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-3">
-              <div className="card bg-success text-white">
-                <div className="card-body">
-                  <h5 className="card-title">Resolved Issues</h5>
-                  <p className="card-text fs-3 fw-semibold">134</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-3">
-              <div className="card bg-warning text-dark">
-                <div className="card-body">
-                  <h5 className="card-title">Pending Approvals</h5>
-                  <p className="card-text fs-3 fw-semibold">5</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* IT Help Desk Section */}
-          <div className="card border-0 shadow-lg text-center p-4 mb-5">
-            <div className="d-flex justify-content-center align-items-center mb-4">
-              <img
-                src={Techmlogo}
-                alt="Tech Mahindra Logo"
-                className="img-fluid"
-                style={{
-                  width: "180px",
-                  filter: "drop-shadow(0px 0px 4px rgba(0,0,0,0.3))",
-                }}
-              />
-            </div>
-
-            <h4 className="fw-bold text-danger mb-2">IT Help Desk Ticket Management</h4>
-            <p className="mb-4 lead px-5">
-              The IT Help Desk ensures smooth functioning of Tech Mahindra
-              Foundation’s digital systems. It tracks, prioritizes, and resolves
-              internal IT issues efficiently, ensuring uninterrupted workflows
-              and improved productivity.
+          {/* Dashboard Overview */}
+          <div id="overview" className="content-container container-fluid text-center">
+            <h3 className="fw-bold text-dark">Welcome, Admin 👋</h3>
+            <p className="text-muted mb-4">
+              Here’s an overview of your IT system’s current performance.
             </p>
-            <p className="fst-italic mb-3">
-              “Technology is powerful when managed efficiently.”
-            </p>
-          </div>
 
-          {/* Pending Tickets Table */}
-          <h3 className="fw-bold text-center mb-3">🔴 Pending 🎟️ Tickets</h3>
-          <div className="table-responsive">
-            <table className="table align-middle table-striped">
-              <thead>
-                <tr>
-                  <th className="bg-black text-success">ID</th>
-                  <th className="bg-black text-warning">Title</th>
-                  <th className="bg-black text-warning">Description</th>
-                  <th className="bg-black text-white">🟢 Status</th>
-                  <th className="bg-black text-white">📊 Priority</th>
-                  <th className="bg-black text-white">❗ Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {tickets.map((ticket) => (
-                  <tr key={ticket.id}>
-                    <td>{ticket.id}</td>
-                    <td className="text-danger fw-semibold">{ticket.title}</td>
-                    <td>{ticket.desc}</td>
-                    <td>
-                      <span className="badge bg-success">{ticket.status}</span>
-                    </td>
-                    <td>
-                      <span className="badge bg-primary">{ticket.priority}</span>
-                    </td>
-                    <td>
-                      <button
-                        className="btn btn-light border shadow-sm"
-                        data-bs-toggle="modal"
-                        data-bs-target="#ticketModal"
-                        onClick={() => setSelectedTicket(ticket)}
-                      >
-                        View
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            <div className="row g-4 mb-5 justify-content-center">
+              <div className="col-md-3">
+                <div className="card bg-primary text-white">
+                  <div className="card-body">
+                    <h5 className="card-title">Open Tickets</h5>
+                    <p className="card-text fs-3 fw-semibold">28</p>
+                  </div>
+                </div>
+              </div>
 
-          {/* Resolved Tickets Table */}
-          <h3 className="fw-bold text-center mb-3 mt-5">✅ Resolved 🎟️ Tickets</h3>
-          <div className="table-responsive">
-            <table className="table align-middle table-striped">
-              <thead>
-                <tr>
-                  <th className="bg-black text-success">ID</th>
-                  <th className="bg-black text-warning">Title</th>
-                  <th className="bg-black text-warning">Description</th>
-                  <th className="bg-black text-white">🟢 Status</th>
-                  <th className="bg-black text-white">📊 Priority</th>
-                  <th className="bg-black text-white">❗ Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {resolvedTickets.map((ticket) => (
-                  <tr key={ticket.id}>
-                    <td>{ticket.id}</td>
-                    <td className="text-danger fw-semibold">{ticket.title}</td>
-                    <td>{ticket.desc}</td>
-                    <td>
-                      <span className="badge bg-success">{ticket.status}</span>
-                    </td>
-                    <td>
-                      <span className="badge bg-primary">{ticket.priority}</span>
-                    </td>
-                    <td>
-                      <button
-                        className="btn btn-light border shadow-sm"
-                        data-bs-toggle="modal"
-                        data-bs-target="#ticketModal"
-                        onClick={() => setSelectedTicket(ticket)}
-                      >
-                        View
-                      </button>
-                    </td>
+              <div className="col-md-3">
+                <div className="card bg-success text-white">
+                  <div className="card-body">
+                    <h5 className="card-title">Resolved Issues</h5>
+                    <p className="card-text fs-3 fw-semibold">134</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-md-3">
+                <div className="card bg-warning text-dark">
+                  <div className="card-body">
+                    <h5 className="card-title">Pending Approvals</h5>
+                    <p className="card-text fs-3 fw-semibold">5</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* IT Help Desk Section */}
+            <div className="card border-0 shadow-lg text-center p-4 mb-5">
+              <div className="d-flex justify-content-center align-items-center mb-4">
+                <img
+                  src={Techmlogo}
+                  alt="Tech Mahindra Logo"
+                  className="img-fluid"
+                  style={{
+                    width: "200px",
+                    filter: "drop-shadow(0px 0px 4px rgba(0,0,0,0.3))",
+                  }}
+                />
+              </div>
+
+              <h4 className="fw-bold text-danger mb-2">IT Help Desk Ticket Management</h4>
+              <p className="mb-4 lead px-5">
+                The IT Help Desk ensures smooth functioning of Tech Mahindra
+                Foundation’s digital systems. It tracks, prioritizes, and resolves
+                internal IT issues efficiently, ensuring uninterrupted workflows
+                and improved productivity.
+              </p>
+              <p className="fst-italic mb-3">
+                “Technology is powerful when managed efficiently.”
+              </p>
+            </div>
+
+            {/* Pending Tickets Table */}
+            <h3 id="pending" className="fw-bold text-center mb-3">
+              🔴 Pending 🎟️ Tickets
+            </h3>
+            <div className="table-responsive">
+              <table className="table align-middle table-striped">
+                <thead>
+                  <tr>
+                    <th className="bg-black text-success">ID</th>
+                    <th className="bg-black text-warning">Title</th>
+                    <th className="bg-black text-warning">Description</th>
+                    <th className="bg-black text-white">🟢 Status</th>
+                    <th className="bg-black text-white">📊 Priority</th>
+                    <th className="bg-black text-white">❗ Actions</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {tickets.map((ticket) => (
+                    <tr key={ticket.id}>
+                      <td>{ticket.id}</td>
+                      <td className="text-danger fw-semibold">{ticket.title}</td>
+                      <td>{ticket.desc}</td>
+                      <td>
+                        <span className="badge bg-success">{ticket.status}</span>
+                      </td>
+                      <td>
+                        <span className="badge bg-primary">{ticket.priority}</span>
+                      </td>
+                      <td>
+                        <button
+                          className="btn btn-light border shadow-sm"
+                          data-bs-toggle="modal"
+                          data-bs-target="#ticketModal"
+                          onClick={() => setSelectedTicket(ticket)}
+                        >
+                          View
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Resolved Tickets Table */}
+            <h3 id="resolved" className="fw-bold text-center mb-3 mt-5">
+              ✅ Resolved 🎟️ Tickets
+            </h3>
+            <div className="table-responsive">
+              <table className="table align-middle table-striped">
+                <thead>
+                  <tr>
+                    <th className="bg-black text-success">ID</th>
+                    <th className="bg-black text-warning">Title</th>
+                    <th className="bg-black text-warning">Description</th>
+                    <th className="bg-black text-white">🟢 Status</th>
+                    <th className="bg-black text-white">📊 Priority</th>
+                    <th className="bg-black text-white">❗ Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {resolvedTickets.map((ticket) => (
+                    <tr key={ticket.id}>
+                      <td>{ticket.id}</td>
+                      <td className="text-danger fw-semibold">{ticket.title}</td>
+                      <td>{ticket.desc}</td>
+                      <td>
+                        <span className="badge bg-success">{ticket.status}</span>
+                      </td>
+                      <td>
+                        <span className="badge bg-primary">{ticket.priority}</span>
+                      </td>
+                      <td>
+                        <button
+                          className="btn btn-light border shadow-sm"
+                          data-bs-toggle="modal"
+                          data-bs-target="#ticketModal"
+                          onClick={() => setSelectedTicket(ticket)}
+                        >
+                          View
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

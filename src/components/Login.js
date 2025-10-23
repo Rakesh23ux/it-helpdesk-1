@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Techmlogo from "../images/Techmlogo.svg";
+import { useNavigate } from "react-router-dom"; //  Import useNavigate
 
-const Register = () => {
+const Login = () => {
+  const navigate = useNavigate(); //  Create navigation instance
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     fullName: "",
@@ -16,7 +18,12 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // You can add authentication or API call logic here
     alert(`✅ ${isLogin ? "Login" : "Registration"} successful!`);
+
+    // ✅ Navigate to Dashboard after successful login/register
+    navigate("/dashboard");
   };
 
   return (
@@ -24,8 +31,7 @@ const Register = () => {
       className="d-flex align-items-center justify-content-center"
       style={{
         minHeight: "120vh",
-        background:
-          "linear-gradient(135deg, #b71c1c, #4a0000, #43ffefff)",
+        background: "linear-gradient(135deg, #b71c1c, #4a0000, #43ffefff)",
         backgroundSize: "400% 400%",
         animation: "gradientShift 8s ease infinite",
       }}
@@ -45,8 +51,7 @@ const Register = () => {
           className="d-none d-md-flex flex-column justify-content-center align-items-center text-light p-4"
           style={{
             flex: 1,
-            background:
-              "linear-gradient(135deg,  #b71c1c, #4a0000, #43ffefff)",
+            background: "linear-gradient(135deg, #b71c1c, #4a0000, #43ffefff)",
             textAlign: "center",
           }}
         >
@@ -56,7 +61,7 @@ const Register = () => {
             style={{ width: "160px", marginBottom: "20px" }}
           />
           <h3 className="fw-bold">Tech Mahindra Helpdesk</h3>
-          <p className="px-4" style={{ opacity: 0.9 }}>
+          <p className="px-4">
             Your IT companion for smart ticketing, approvals, and real-time
             support.
           </p>
@@ -189,4 +194,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

@@ -26,10 +26,9 @@ const Contact = () => {
     <section
       className="contact-section py-5"
       style={{
-        background: "linear-gradient(105deg, #b71c1c, #4a0000, #43ffefff)",
-                animation: "gradientShift 8s ease infinite",
+        background: "linear-gradient(105deg, #e51919ff, #4a0000, #e1d9d9ff)",
+        animation: "gradientShift 8s ease infinite",
         backgroundSize: "400% 400%",
-
         color: "#fff",
         minHeight: "100vh",
         position: "relative",
@@ -53,7 +52,7 @@ const Contact = () => {
           <img
             src={Techmlogo}
             alt="Tech Mahindra Logo"
-            style={{ width: "200px", marginBottom: "20px" }}
+            style={{ width: "300px", marginBottom: "20px" }}
           />
           <p className="fw-bold lead text-white mb-0">We’re Here to Support You 24/7</p>
         </div>
@@ -177,10 +176,10 @@ const Contact = () => {
           </div>
         </div>
 
-          <div className="text-warning mb-3"> 
-            © {new Date().getFullYear()} Tech Mahindra Helpdesk | All rights
-            reserved
-          </div>
+        <div className="text-warning mb-3">
+          © {new Date().getFullYear()} Tech Mahindra Helpdesk | All rights
+          reserved
+        </div>
       </div>
 
       <style jsx="true">{`
@@ -190,7 +189,18 @@ const Contact = () => {
           transition: 0.3s ease-in-out;
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
         }
-      `}</style>
+          @keyframes gradientShift {
+         0% {
+           background-position: 0% 50%;
+        }
+         50% {
+           background-position: 100% 50%;
+        }
+         100% {
+           background-position: 0% 50%;
+     }
+   }
+   `}</style>
     </section>
   );
 };
