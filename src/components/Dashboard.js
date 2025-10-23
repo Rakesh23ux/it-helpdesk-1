@@ -1,6 +1,19 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import {
+  LineChart,
+  Line,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  PieChart,
+  Pie,
+  Cell,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 import Techmlogo from "../images/Techmlogo.svg";
 import { useNavigate } from "react-router-dom";
 
@@ -29,284 +42,212 @@ function Dashboard() {
     navigate("/");
   };
 
+  // Chart data
+  const monthlyTickets = [
+    { month: "Jan", Open: 20, Resolved: 35 },
+    { month: "Feb", Open: 25, Resolved: 40 },
+    { month: "Mar", Open: 15, Resolved: 50 },
+    { month: "Apr", Open: 30, Resolved: 55 },
+    { month: "May", Open: 18, Resolved: 42 },
+    { month: "Jun", Open: 10, Resolved: 60 },
+  ];
+
+  const pieData = [
+    { name: "High Priority", value: 8 },
+    { name: "Medium Priority", value: 4 },
+    { name: "Low Priority", value: 2 },
+  ];
+
+  const COLORS = ["#dc3545", "#ffc107", "#0d6efd"];
+
   return (
-    <div
-      className="d-flex"
-      style={{ minHeight: "160vh", backgroundColor: "#f8f9fa" }}
-    >
-      {/* ✅ Sidebar */}
-      <div
-        className="bg-dark text-white p-4 d-flex flex-column justify-content-start"
-        style={{
-          width: "250px",
-          position: "sticky",
-          top: 0,
-          height: "100vh",
-          boxShadow: "2px 0 8px rgba(0,0,0,0.2)",
-        }}
-      >
-    
-        <h5 className="fw-bold text-danger mb-4 text-center ">Admin Panel</h5>
+    <div className="d-flex" style={{ minHeight: "160vh", backgroundColor: "#f5f6fa" }}>
+      {/* Sidebar */}
+      <div className="bg-dark text-white p-4 d-flex flex-column justify-content-start sidebar">
+        <h5 className="fw-bold text-danger mb-4 text-center">Admin Panel</h5>
         <ul className="nav flex-column gap-3">
+          <li><a href="#overview" className="text-white text-decoration-none">🏠 Dashboard Overview</a></li>
+          <li><a href="#analytics" className="text-white text-decoration-none">📊 Analytics</a></li>
+          <li><a href="#pending" className="text-white text-decoration-none">🔴 Pending Tickets</a></li>
+          <li><a href="#resolved" className="text-white text-decoration-none">✅ Resolved Tickets</a></li>
           <li>
-            <a href="#overview" className="text-white text-decoration-none">
-              🏠 Dashboard Overview
-            </a>
-          </li>
-          <li>
-            <a href="#pending" className="text-white text-decoration-none">
-              🔴 Pending Tickets
-            </a>
-          </li>
-          <li>
-            <a href="#resolved" className="text-white text-decoration-none">
-              ✅ Resolved Tickets
-            </a>
-          </li>
-          <li>
-            <button
-              onClick={handleLogout}
-              className="btn btn-outline-danger w-100 fw-bold mt-4"
-            >
+            <button onClick={handleLogout} className="btn btn-outline-danger w-100 fw-bold mt-4">
               Logout
             </button>
           </li>
         </ul>
       </div>
 
-      {/* ✅ Main Content (your existing dashboard) */}
+      {/* Main Dashboard */}
       <div className="flex-grow-1 p-4">
         <div className="dashboard-container border rounded shadow p-4 w-100 bg-white">
+
           {/* Navbar */}
-          <nav
-            className="navbar-custom mb-4 d-flex justify-content-between align-items-center rounded p-3"
-            style={{ backgroundColor: "#a72e2eff", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" }}
-          >
+          <nav className="navbar-custom mb-4 d-flex bg-secondary justify-content-between align-items-center rounded p-3">
             <span className="fw-bold text-warning fs-4">Admin Dashboard</span>
-            <button
-              type="button"
-              className="btn btn-outline-warning text-white fw-bold"
-              onClick={handleLogout}
-            >
+            <button type="button" className="btn btn-outline-warning text-white fw-bold" onClick={handleLogout}>
               Logout
             </button>
           </nav>
 
-          {/* Dashboard Overview */}
-          <div id="overview" className="content-container container-fluid text-center">
+          {/* Overview Cards */}
+          <section id="overview" className="text-center mb-5">
             <h3 className="fw-bold text-dark">Welcome, Admin 👋</h3>
             <p className="text-muted mb-4">
-              Here’s an overview of your IT system’s current performance.
+              Track IT performance, open tickets, and resolution metrics in one glance.
             </p>
+            <div className="row g-4 justify-content-center">
+              <div className="col-md-3"><div className="card bg-primary text-white"><div className="card-body"><h5>Open Tickets</h5><p className="fs-3 fw-semibold">28</p></div></div></div>
+              <div className="col-md-3"><div className="card bg-success text-white"><div className="card-body"><h5>Resolved Issues</h5><p className="fs-3 fw-semibold">134</p></div></div></div>
+              <div className="col-md-3"><div className="card bg-warning text-dark"><div className="card-body"><h5>Pending Approvals</h5><p className="fs-3 fw-semibold">5</p></div></div></div>
+              <div className="col-md-3"><div className="card bg-danger text-white"><div className="card-body"><h5>High Priority</h5><p className="fs-3 fw-semibold">8</p></div></div></div>
+            </div>
+          </section>
 
-            <div className="row g-4 mb-5 justify-content-center">
-              <div className="col-md-3">
-                <div className="card bg-primary text-white">
-                  <div className="card-body">
-                    <h5 className="card-title">Open Tickets</h5>
-                    <p className="card-text fs-3 fw-semibold">28</p>
-                  </div>
+          {/* Charts Section */}
+          <section id="analytics" className="mb-5">
+            <h4 className="fw-bold text-center mb-4">📊 System Analytics</h4>
+            <div className="row g-4">
+              <div className="col-lg-8 col-md-12">
+                <div className="card p-3 shadow-sm">
+                  <h6 className="text-center mb-3">Monthly Ticket Trends</h6>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={monthlyTickets}>
+                      <Line type="monotone" dataKey="Open" stroke="#dc3545" strokeWidth={2} />
+                      <Line type="monotone" dataKey="Resolved" stroke="#28a745" strokeWidth={2} />
+                      <CartesianGrid stroke="#ccc" />
+                      <XAxis dataKey="month" />
+                      <YAxis />
+                      <Tooltip />
+                    </LineChart>
+                  </ResponsiveContainer>
                 </div>
               </div>
 
-              <div className="col-md-3">
-                <div className="card bg-success text-white">
-                  <div className="card-body">
-                    <h5 className="card-title">Resolved Issues</h5>
-                    <p className="card-text fs-3 fw-semibold">134</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-md-3">
-                <div className="card bg-warning text-dark">
-                  <div className="card-body">
-                    <h5 className="card-title">Pending Approvals</h5>
-                    <p className="card-text fs-3 fw-semibold">5</p>
-                  </div>
+              <div className="col-lg-4 col-md-12">
+                <div className="card p-3 shadow-sm">
+                  <h6 className="text-center mb-3">Priority Distribution</h6>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <PieChart>
+                      <Pie data={pieData} dataKey="value" outerRadius={100} label>
+                        {pieData.map((entry, index) => (
+                          <Cell key={index} fill={COLORS[index % COLORS.length]} />
+                        ))}
+                      </Pie>
+                      <Tooltip />
+                      <Legend />
+                    </PieChart>
+                  </ResponsiveContainer>
                 </div>
               </div>
             </div>
+          </section>
 
-            {/* IT Help Desk Section */}
-            <div className="card border-0 shadow-lg text-center p-4 mb-5">
-              <div className="d-flex justify-content-center align-items-center mb-4">
-                <img
-                  src={Techmlogo}
-                  alt="Tech Mahindra Logo"
-                  className="img-fluid"
-                  style={{
-                    width: "200px",
-                    filter: "drop-shadow(0px 0px 4px rgba(0,0,0,0.3))",
-                  }}
-                />
-              </div>
-
-              <h4 className="fw-bold text-danger mb-2">IT Help Desk Ticket Management</h4>
-              <p className="mb-4 lead px-5">
-                The IT Help Desk ensures smooth functioning of Tech Mahindra
-                Foundation’s digital systems. It tracks, prioritizes, and resolves
-                internal IT issues efficiently, ensuring uninterrupted workflows
-                and improved productivity.
-              </p>
-              <p className="fst-italic mb-3">
-                “Technology is powerful when managed efficiently.”
-              </p>
-            </div>
-
-            {/* Pending Tickets Table */}
-            <h3 id="pending" className="fw-bold text-center mb-3">
-              🔴 Pending 🎟️ Tickets
-            </h3>
-            <div className="table-responsive">
-              <table className="table align-middle table-striped">
-                <thead>
-                  <tr>
-                    <th className="bg-black text-success">ID</th>
-                    <th className="bg-black text-warning">Title</th>
-                    <th className="bg-black text-warning">Description</th>
-                    <th className="bg-black text-white">🟢 Status</th>
-                    <th className="bg-black text-white">📊 Priority</th>
-                    <th className="bg-black text-white">❗ Actions</th>
+          {/* Pending Tickets */}
+          <h3 id="pending" className="fw-bold text-center mb-3">🔴 Pending 🎟️ Tickets</h3>
+          <div className="table-responsive mb-5">
+            <table className="table align-middle table-striped">
+              <thead>
+                <tr>
+                  <th className="bg-black text-success">ID</th>
+                  <th className="bg-black text-warning">Title</th>
+                  <th className="bg-black text-warning">Description</th>
+                  <th className="bg-black text-white">🟢 Status</th>
+                  <th className="bg-black text-white">📊 Priority</th>
+                  <th className="bg-black text-white">❗ Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tickets.map((ticket) => (
+                  <tr key={ticket.id}>
+                    <td>{ticket.id}</td>
+                    <td className="text-danger fw-semibold">{ticket.title}</td>
+                    <td>{ticket.desc}</td>
+                    <td><span className="badge bg-success">{ticket.status}</span></td>
+                    <td><span className="badge bg-primary">{ticket.priority}</span></td>
+                    <td>
+                      <button
+                        className="btn btn-light border shadow-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#ticketModal"
+                        onClick={() => setSelectedTicket(ticket)}
+                      >
+                        View
+                      </button>
+                    </td>
                   </tr>
-                </thead>
-                <tbody>
-                  {tickets.map((ticket) => (
-                    <tr key={ticket.id}>
-                      <td>{ticket.id}</td>
-                      <td className="text-danger fw-semibold">{ticket.title}</td>
-                      <td>{ticket.desc}</td>
-                      <td>
-                        <span className="badge bg-success">{ticket.status}</span>
-                      </td>
-                      <td>
-                        <span className="badge bg-primary">{ticket.priority}</span>
-                      </td>
-                      <td>
-                        <button
-                          className="btn btn-light border shadow-sm"
-                          data-bs-toggle="modal"
-                          data-bs-target="#ticketModal"
-                          onClick={() => setSelectedTicket(ticket)}
-                        >
-                          View
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-            {/* Resolved Tickets Table */}
-            <h3 id="resolved" className="fw-bold text-center mb-3 mt-5">
-              ✅ Resolved 🎟️ Tickets
-            </h3>
-            <div className="table-responsive">
-              <table className="table align-middle table-striped">
-                <thead>
-                  <tr>
-                    <th className="bg-black text-success">ID</th>
-                    <th className="bg-black text-warning">Title</th>
-                    <th className="bg-black text-warning">Description</th>
-                    <th className="bg-black text-white">🟢 Status</th>
-                    <th className="bg-black text-white">📊 Priority</th>
-                    <th className="bg-black text-white">❗ Actions</th>
+          {/* Resolved Tickets */}
+          <h3 id="resolved" className="fw-bold text-center mb-3">✅ Resolved 🎟️ Tickets</h3>
+          <div className="table-responsive">
+            <table className="table align-middle table-striped">
+              <thead>
+                <tr>
+                  <th className="bg-black text-success">ID</th>
+                  <th className="bg-black text-warning">Title</th>
+                  <th className="bg-black text-warning">Description</th>
+                  <th className="bg-black text-white">🟢 Status</th>
+                  <th className="bg-black text-white">📊 Priority</th>
+                  <th className="bg-black text-white">❗ Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {resolvedTickets.map((ticket) => (
+                  <tr key={ticket.id}>
+                    <td>{ticket.id}</td>
+                    <td className="text-danger fw-semibold">{ticket.title}</td>
+                    <td>{ticket.desc}</td>
+                    <td><span className="badge bg-success">{ticket.status}</span></td>
+                    <td><span className="badge bg-primary">{ticket.priority}</span></td>
+                    <td>
+                      <button
+                        className="btn btn-light border shadow-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#ticketModal"
+                        onClick={() => setSelectedTicket(ticket)}
+                      >
+                        View
+                      </button>
+                    </td>
                   </tr>
-                </thead>
-                <tbody>
-                  {resolvedTickets.map((ticket) => (
-                    <tr key={ticket.id}>
-                      <td>{ticket.id}</td>
-                      <td className="text-danger fw-semibold">{ticket.title}</td>
-                      <td>{ticket.desc}</td>
-                      <td>
-                        <span className="badge bg-success">{ticket.status}</span>
-                      </td>
-                      <td>
-                        <span className="badge bg-primary">{ticket.priority}</span>
-                      </td>
-                      <td>
-                        <button
-                          className="btn btn-light border shadow-sm"
-                          data-bs-toggle="modal"
-                          data-bs-target="#ticketModal"
-                          onClick={() => setSelectedTicket(ticket)}
-                        >
-                          View
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
 
-      {/* Modal Popup */}
-      <div
-        className="modal fade"
-        id="ticketModal"
-        tabIndex="-1"
-        aria-labelledby="ticketModalLabel"
-        aria-hidden="true"
-      >
+      {/* Modal */}
+      <div className="modal fade" id="ticketModal" tabIndex="-1" aria-labelledby="ticketModalLabel" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered modal-lg">
           <div className="modal-content">
             <div className="modal-header bg-dark text-white">
-              <h5 className="modal-title" id="ticketModalLabel">
-                Ticket Details
-              </h5>
-              <button
-                type="button"
-                className="btn-close btn-close-white"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+              <h5 className="modal-title">Ticket Details</h5>
+              <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <div className="modal-body text-start">
               {selectedTicket ? (
                 <>
-                  <h5 className="text-danger fw-bold">
-                    {selectedTicket.title} ({selectedTicket.id})
-                  </h5>
+                  <h5 className="text-danger fw-bold">{selectedTicket.title} ({selectedTicket.id})</h5>
                   <p className="text-muted mb-2">{selectedTicket.desc}</p>
-                  <p>
-                    <strong>Status:</strong>{" "}
-                    <span className="badge bg-success">{selectedTicket.status}</span>
-                  </p>
-                  <p>
-                    <strong>Priority:</strong>{" "}
-                    <span className="badge bg-primary">{selectedTicket.priority}</span>
-                  </p>
+                  <p><strong>Status:</strong> <span className="badge bg-success">{selectedTicket.status}</span></p>
+                  <p><strong>Priority:</strong> <span className="badge bg-primary">{selectedTicket.priority}</span></p>
                   <hr />
                   <h6 className="fw-bold text-dark">About IT Help Desk</h6>
                   <p className="text-muted">
-                    The <strong>Tech Mahindra IT Help Desk System</strong> ensures
-                    timely resolution of internal IT issues, improving operational
-                    efficiency and service quality. Each ticket is categorized by
-                    priority to streamline workflow and ensure faster turnaround.
+                    The <strong>Tech Mahindra IT Help Desk System</strong> ensures smooth resolution of IT issues.
                   </p>
-                  <ul>
-                    <li>🟢 <strong>In-progress:</strong> Ticket is being actively worked on by the IT team.</li>
-                    <li>🟡 <strong>Pending Approval:</strong> Awaiting admin validation or action.</li>
-                    <li>✅ <strong>Completed:</strong> Issue resolved and verified by the user.</li>
-                  </ul>
                 </>
               ) : (
                 <p>Loading ticket details...</p>
               )}
             </div>
             <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ function About() {
         justifyContent: "center",
         alignItems: "center",
         padding: "30px",
-        background: "linear-gradient(135deg, #000000, #4a0000, #e1d9d9ff)",
+        background: "linear-gradient(135deg, #3e3b3bff,  #a12525ff)",
         animation: "gradientShift 8s ease infinite",
         backgroundSize: "400% 400%",
       }}
