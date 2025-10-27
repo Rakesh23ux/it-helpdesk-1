@@ -26,7 +26,7 @@ const Contact = () => {
     <section
       className="contact-section py-5"
       style={{
-        background: "linear-gradient(105deg, #3e3b3bff,  #a12525ff)",
+        background: "linear-gradient(135deg, #f4ebebff, #24249aff )",
         animation: "gradientShift 8s ease infinite",
         backgroundSize: "400% 400%",
         color: "#fff",
@@ -42,7 +42,6 @@ const Contact = () => {
           left: 0,
           width: "100%",
           height: "100%",
-          background: "rgba(0, 0, 0, 0.4)",
           zIndex: 0,
         }}
       ></div>
@@ -54,7 +53,7 @@ const Contact = () => {
             alt="Tech Mahindra Logo"
             style={{ width: "300px", marginBottom: "20px" }}
           />
-          <p className="fw-bold lead text-white mb-0">We’re Here to Support You 24/7</p>
+          <p className="fw-bold lead text-danger mb-0">We’re Here to Support You 24/7</p>
         </div>
 
         <div className="row g-4 align-items-start">
@@ -64,7 +63,6 @@ const Contact = () => {
               className="info-card p-4 h-100 shadow-lg rounded-4 bg-white "
               style={{
                 color: "#212529",
-                borderTop: "5px solid #b71c1c",
               }}
             >
               <h3 className="fw-bold text-danger mb-3">Contact Information</h3>

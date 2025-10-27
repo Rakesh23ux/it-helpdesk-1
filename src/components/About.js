@@ -1,72 +1,159 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Techmlogo from "../images/Techmlogo.svg";
+import Techmlogo1 from "../images/Techmlogo1.svg";
 
 function About() {
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+  }, []);
+
   return (
-    <div
+    <section
+      id="about"
       style={{
-        minHeight: "110vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "30px",
-        background: "linear-gradient(135deg, #3e3b3bff,  #a12525ff)",
-        animation: "gradientShift 8s ease infinite",
-        backgroundSize: "400% 400%",
+        minHeight: "100vh",
+        background: "linear-gradient(185deg, #f4ebebff, #24249aff )",
+        color: "#fff",
+        fontFamily: "'Poppins', sans-serif",
+        padding: "5rem 0",
       }}
     >
-      <div className="about-section text-white text-center">
-        <img
-          src={Techmlogo}
-          alt="Tech Mahindra"
-          style={{ width: "300px", marginBottom: "20px" }}
-        />        <h2 className="text-warning fw-semibold mb-4">
-          IT Help Desk Ticketing System
-        </h2>
+      <div className="container">
+        {/* Header */}
+        <div className="text-center mb-5" data-aos="fade-down">
+          <img
+            src={Techmlogo}
+            alt="Tech Mahindra Logo"
+            style={{ width: "220px", marginBottom: "15px" }}
+          />
+          <h2 className="fw-bold text-danger text-uppercase mt-2">
+            About Tech Mahindra IT Helpdesk System
+          </h2>
+          <p className="text-light mt-3 fs-5">
+            Simplifying enterprise IT with automation, analytics, and innovation.
+          </p>
+        </div>
 
+        {/* About Content */}
+        <div className="row align-items-center g-5">
+          {/* Left Image */}
+          <div className="col-lg-6" data-aos="fade-right">
+            <div
+              className="rounded-4 overflow-hidden shadow-lg"
+              style={{
+                border: "3px solid rgba(226, 20, 20, 0.48)",
+                background: "rgba(255,255,255,0.03)",
+              }}
+            >
+              <img
+                src={Techmlogo1}
+                alt="About Tech Mahindra"
+                className="img-fluid"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  transition: "transform 0.5s ease",
+                }}
+                onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
+                onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+              />
+            </div>
+          </div>
 
-        <p className="lead  text-white mb-4 px-md-5">
-          The IT Help Desk acts as the backbone of technical assistance for
-          internal teams, ensuring smooth workflows, quick response times, and
-          effective problem resolution. It reflects the Foundation’s belief in
-          using technology to empower people and simplify processes.
-        </p>
+          {/* Right Text */}
+          <div className="col-lg-6" data-aos="fade-left">
+            <h3 className="fw-bold text-warning mb-3">
+              Empowering Smart IT Operations
+            </h3>
+            <p className="text-white-50 fs-5 mb-4">
+              Tech Mahindra’s IT Helpdesk System brings automation and agility to
+              enterprise service management, ensuring faster resolutions and
+              transparent communication.
+            </p>
 
-        <h3 className="fw-bold text-warning mt-5 mb-3">System Overview</h3>
-        <p className=" text-center mx-auto px-3 px-md-5">
-          ⚙️ A user-friendly interface to submit and monitor IT-related issues.
-          📩 Automated ticket creation and tracking for faster resolution.
-          🔍 Transparent communication between users and IT support teams.<br></br>
-          📊 Data-driven insights to improve service quality and productivity.<br></br>
-          💡 Promotes accountability, collaboration, and continuous improvement
-        </p>
+            <ul className="list-unstyled text-white-50 fs-6">
+              <li className="mb-2">
+                ✅ <strong>Automation First:</strong> AI-powered ticket routing for
+                rapid issue resolution.
+              </li>
+              <li className="mb-2">
+                ⚙️ <strong>Collaboration Ready:</strong> Streamlined cross-team
+                communication.
+              </li>
+              <li className="mb-2">
+                📊 <strong>Insight Driven:</strong> Analytics for smarter IT
+                decisions.
+              </li>
+              <li>
+                🔒 <strong>Secure & Scalable:</strong> Enterprise-grade protection
+                and reliability.
+              </li>
+            </ul>
 
-        <p className="lead mt-5 text-white px-md-5">
-          By integrating the Help Desk System, Tech Mahindra Foundation ensures
-          that technology remains a reliable enabler — supporting its mission to
-          empower communities and deliver excellence with purpose.
-        </p>
+            <button
+              className="btn btn-warning btn-lg rounded-pill px-4 mt-3 fw-semibold"
+              style={{
+                color: "#212121",
+                transition: "all 0.3s ease",
+              }}
+              onMouseOver={(e) => (e.currentTarget.style.background = "#ffc107d9")}
+              onMouseOut={(e) => (e.currentTarget.style.background = "#ffc107")}
+            >
+              Learn More
+            </button>
+          </div>
+        </div>
 
-        <div className="text-black">
-          © 2025 Tech Mahindra Foundation | Empowering Futures with Technology
+        {/* Mission/Vision/Values */}
+        <div className="row mt-5 text-center" data-aos="fade-up">
+          {[
+            {
+              title: "Our Mission",
+              text: "To merge technology and human intelligence for seamless IT experiences.",
+            },
+            {
+              title: "Our Vision",
+              text: "To lead digital transformation through innovation and reliability.",
+            },
+            {
+              title: "Our Values",
+              text: "Integrity, Collaboration, and Continuous Improvement define us.",
+            },
+          ].map((item, index) => (
+            <div className="col-md-4 mb-4" key={index}>
+              <div
+                className="p-4 rounded-4 shadow-sm h-100"
+                style={{
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  transition: "transform 0.3s ease, background 0.3s ease",
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = "translateY(-5px)";
+                  e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+                }}
+              >
+                <h4 className="text-warning fw-bold mb-2">{item.title}</h4>
+                <p className="text-white-50 mb-0">{item.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer */}
+        <div className="text-center text-white-50 mt-5 pt-3">
+          <hr className="border-light opacity-25" />
+          <small>© 2025 Tech Mahindra Foundation | Empowering Futures with Technology</small>
         </div>
       </div>
-      <style jsx="true">{`
-  @keyframes gradientShift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-`}</style>
-
-    </div>
+    </section>
   );
 }
 
