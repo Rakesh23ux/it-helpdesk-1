@@ -15,10 +15,11 @@ function About() {
       id="about"
       style={{
         minHeight: "100vh",
-        background: "linear-gradient(185deg, #f4ebebff, #24249aff )",
+        background: "linear-gradient(185deg, #ecf3efc4, #000000ff )",
         color: "#fff",
         fontFamily: "'Poppins', sans-serif",
         padding: "5rem 0",
+        marginTop: "30px",
       }}
     >
       <div className="container">

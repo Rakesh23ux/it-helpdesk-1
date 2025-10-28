@@ -18,7 +18,7 @@ function Services() {
     <section
       id="services"
       style={{
-        background: "linear-gradient(185deg, #f4ebebff, #24249aff )",
+        background: "linear-gradient(185deg, #ecf3efc4, #000000ff )",
         padding: "4rem 0 ",
         fontFamily: "'Poppins', Arial, sans-serif",
         color: "#212529",

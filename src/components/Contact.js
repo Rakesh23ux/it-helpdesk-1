@@ -26,12 +26,13 @@ const Contact = () => {
     <section
       className="contact-section py-5"
       style={{
-        background: "linear-gradient(135deg, #f4ebebff, #24249aff )",
+        background: "linear-gradient(185deg, #ecf3efc4, #000000ff )",
         animation: "gradientShift 8s ease infinite",
         backgroundSize: "400% 400%",
         color: "#fff",
         minHeight: "100vh",
         position: "relative",
+        marginTop: "30px",
       }}
     >
       <div
